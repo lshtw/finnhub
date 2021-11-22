@@ -1,0 +1,23 @@
+<dx-data-grid
+  id="gridContainer"
+  [dataSource]="_dataSource"
+  keyExpr="figi"
+  (onCellClick)="selectionChanged($event)"
+  [showBorders]="true"
+>
+  <dxo-search-panel
+    [visible]="true"
+    [highlightCaseSensitive]="true"
+  ></dxo-search-panel>
+  <dxi-column dataField="currency" [width]="70" caption="Title"></dxi-column>
+  <dxi-column dataField="description"></dxi-column>
+  <dxi-column dataField="displaySymbol"></dxi-column>
+  <dxi-column dataField="figi" [width]="170"></dxi-column>
+  <dxi-column dataField="mic" [width]="125"></dxi-column>
+  <dxi-column dataField="symbol" [width]="125"></dxi-column>
+  <dxi-column dataField="type" [width]="125"></dxi-column>
+  <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+  <div *dxTemplate="let item of 'detail'">
+    <app-test-stock-detail [key]="item.data.symbol"></app-test-stock-detail>
+  </div>
+</dx-data-grid>

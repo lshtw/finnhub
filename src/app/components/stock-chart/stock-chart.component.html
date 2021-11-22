@@ -1,0 +1,33 @@
+<dx-chart *ngIf="symbol;else unset" id="chart" title="Stock Price" [dataSource]="_stockPrices">
+  <dxi-series
+    name="DELL"
+    openValueField="o"
+    highValueField="h"
+    lowValueField="l"
+    closeValueField="c"
+    type="candlestick"
+  >
+    <dxo-reduction color="red"></dxo-reduction>
+  </dxi-series>
+  <dxo-common-series-settings argumentField="t" type="candlestick">
+  </dxo-common-series-settings>
+  <dxo-legend itemTextPosition="left"></dxo-legend>
+  <dxi-value-axis >
+    <dxo-title text="US dollars"></dxo-title>
+    <dxo-label>
+      <dxo-format type="currency" [precision]="0"> </dxo-format>
+    </dxo-label>
+  </dxi-value-axis>
+  <dxo-argument-axis>
+    <dxo-label format="millisecond"></dxo-label>
+  </dxo-argument-axis>
+  <dxo-export [enabled]="true"></dxo-export>
+  <dxo-tooltip
+    [enabled]="true"
+    location="edge"
+  >
+  </dxo-tooltip>
+</dx-chart>
+<ng-template #unset>
+  <p>Акция не выбрана</p>
+</ng-template>

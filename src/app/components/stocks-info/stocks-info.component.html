@@ -1,0 +1,7 @@
+<div class="parent">
+  <div class="div1"><app-test-stock-chart [symbol]="symbol"></app-test-stock-chart> </div>
+  <div class="div2"><app-test-qoute-data></app-test-qoute-data> </div>
+  <div class="div3">
+    <app-test-stocks-list (symbolChanged)="onSymbolChanged($event)"></app-test-stocks-list>
+    </div>
+</div>
